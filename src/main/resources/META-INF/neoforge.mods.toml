@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "GPL-3.0-or-later"
+issueTrackerURL = "https://github.com/Wurst-Imperium/Wurst7/issues"
+
+[[mods]]
+modId = "wurst"
+version = "7.51.2"
+displayName = "Wurst Client"
+authors = "Alexander01998"
+description = '''Wurst Wurst Wurst! Unofficial NeoForge port of the Wurst Client.'''
+logoFile = "assets/wurst/icon.png"
+
+[[dependencies.wurst]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.0,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.wurst]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.21.2)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[mixins]]
+config = "wurst.mixins.json"

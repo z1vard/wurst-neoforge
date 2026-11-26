@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'net.neoforged.moddev' version '2.0.148'
+}
+
+version = "${project.mod_version}-neoforge"
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+	withSourcesJar()
+}
+
+neoForge {
+	version = project.neoforge_version
+	validateAccessTransformers = true
+
+	runs {
+		client {
+			client()
+		}
+	}
+
+	mods {
+		wurst {
+			sourceSet sourceSets.main
+		}
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 21
+	options.encoding = 'UTF-8'
+}
+
+jar {
+	from('LICENSE.txt') {
+		rename { "LICENSE-${project.archives_base_name}.txt" }
+	}
+	exclude('intentionally_untranslated.json')
+	manifest {
+		attributes('Automatic-Module-Name': 'net.wurstclient')
+	}
+}
